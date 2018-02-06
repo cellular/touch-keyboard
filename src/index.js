@@ -91,4 +91,4 @@ function hideKeyboard(ev) {
 }
 
 document.addEventListener("focus", showKeyboard, true);
-//document.addEventListener("blur", hideKeyboard, true);
+document.addEventListener("blur", hideKeyboard, true);
