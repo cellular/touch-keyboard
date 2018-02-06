@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">    
+  <style type="text/css">
+  body {
+    margin: 0;
+    font-family: sans-serif;
+    background: linear-gradient(to left, #ff4e50, #f9d423);
+  }
+  form {
+    margin: 10%;
+  }
+  input {
+    display: block;
+    font-size: 2em;
+    margin: .1em 0 1em;
+    border: none;
+  }
+  .bottom {
+    margin-top: 50vh;
+  }
+  </style>
+</head>
+<body>
+  <form>
+    Name:
+    <input type="text" />
+
+    Number:
+    <input type="number" />
+    <select id="theme">
+      <option>Default</option>
+      <option>Android</option>
+      <option>Dark</option>
+      <option>Outline</option>
+    </select>
+    <input class="bottom" type="text" />
+  </form>
+  <script>
+    var themes = [
+      {},
+      {
+        style: {
+          keyboard: {
+            background: '#eceff1',
+            color: '#32424a',
+          },
+          keys: {
+            space: {
+              background: '#d1d6d9',
+            },
+          },
+        },
+      },
+      {
+        style: {
+          keyboard: {
+            background: '#000000',
+            color: '#32424a',
+            fontWeight: 300,
+            fontSize: '3vw',
+            WebkitFontSmoothing: 'antialiased',
+          },
+          key: {
+            background: '#302f37',
+            color: '#f3f3f3',
+            borderRadius: 0,
+          },
+          keys: {
+            space: {
+              background: '#302f37',
+              maxHeight: 'none'
+            }            
+          },
+        },
+      },
+      {
+        style: {
+          keyboard: {
+            background: '#fff',
+            color: '#3c4650',
+            fontSize: '2.5vw',
+            fontWeight: 300
+          },
+          key: {
+            border: '.06em solid currentColor',
+            borderRadius: 0,
+            margin: '.4em',
+            padding: '.4em .7em',
+          },
+          keys: {
+            space: {
+              height: '1.2em',
+              background: 'none',
+              
+            }
+          }
+        }
+      }
+    ];
+
+    theme.onchange = function() {
+      window.touchKeyboard = themes[theme.selectedIndex];
+      console.log(touchKeyboard)
+    }   
+  </script>
+</body>
+</html>

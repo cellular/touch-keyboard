@@ -1,0 +1,23 @@
+{
+  "name": "touch-keyboard",
+  "version": "0.1.0",
+  "description": "Virtual on-screen keyboard",
+  "main": "./dist/index.js",
+  "scripts": {
+    "start": "cs start",
+    "build": "cs build",
+    "lint": "cs lint",
+    "test": "cs test",
+    "fix": "cs fix",
+    "precommit": "cs precommit",
+    "postmerge": "cs postmerge",
+    "prepublishOnly": "npm run build"
+  },
+  "dependencies": {
+    "deep-extend": "^0.5.0"
+  },
+  "devDependencies": {
+    "cellular-scripts": "^1.2.0",
+    "eslint": "^4.17.0"
+  }
+}
