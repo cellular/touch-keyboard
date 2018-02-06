@@ -2,7 +2,7 @@
 
 Virtual on-screen keyboard for digital signage screens.
 
-![screenshot](screenshot.jpg)
+![screenshot](https://raw.githubusercontent.com/fgnass/touch-keyboard/master/screenshot.jpg)
 
 The keyboard will show up whenever an input field (or textarea) is focused.
 
@@ -44,9 +44,9 @@ window.touchKeyboard = {
 };
 ```
 
-![dark theme](dark.jpg)
+![dark theme](https://raw.githubusercontent.com/fgnass/touch-keyboard/master/dark.jpg)
 
-You can also style individual keys. The following code is taken from the [default config](src/defaults.js) and makes the shift and backspace keys twice was wide (regular keys are 1em wide):
+You can also style individual keys. The following code is taken from the [default config](https://github.com/fgnass/touch-keyboard/blob/master/src/defaults.js) and makes the shift and backspace keys twice was wide (regular keys are 1em wide):
 
 ```js
 window.touchKeyboard = {
