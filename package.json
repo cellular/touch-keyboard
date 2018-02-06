@@ -1,6 +1,6 @@
 {
   "name": "touch-keyboard",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Virtual on-screen keyboard",
   "repository": "fgnass/touch-keyboard",
   "main": "./dist/index.js",
