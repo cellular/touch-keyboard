@@ -12,6 +12,9 @@
   form {
     margin: 10%;
   }
+  label {
+    margin-right: 1em;
+  }
   input {
     display: block;
     font-size: 2em;
@@ -25,80 +28,84 @@
 </head>
 <body>
   <form>
-    Name:
+    <label>Name:</label>
     <input type="text" />
 
-    Number:
+    <label>Number:</label>
     <input type="number" />
+
+    <label>Theme:</label>
     <select id="theme">
       <option>Default</option>
-      <option>Android</option>
       <option>Dark</option>
       <option>Outline</option>
+      <option>Lightweight</option>
+      <option>QWERTY</option>
     </select>
     <input class="bottom" type="text" />
   </form>
   <script>
     var themes = [
-      {},
+      { 
+        // Default
+      },      
       {
+        // Dark
+        style: {
+          keyboard: {
+            background: '#111',
+          },
+          key: {
+            background: '#333',
+            color: '#ddd',
+            fontSize: '.35em',
+            fontWeight: 300,
+            textShadow: '0 -1px 0 #000',
+          },
+        },
+      },
+      {
+        // Outline
+        style: {
+          keyboard: {
+            background: '#fff',
+            color: '#555',
+          },
+          key: {
+            background: 'none',
+            border: '1px solid #888',
+          },
+        }
+      },
+      {
+        // Lightweight
         style: {
           keyboard: {
             background: '#eceff1',
             color: '#32424a',
           },
+          key: {
+            background: 'none',
+          },
           keys: {
             space: {
-              background: '#d1d6d9',
+              background: '#d1d6d9',        
+              height: '.5em',
             },
           },
         },
       },
       {
-        style: {
-          keyboard: {
-            background: '#000000',
-            color: '#32424a',
-            fontWeight: 300,
-            fontSize: '3vw',
-            WebkitFontSmoothing: 'antialiased',
-          },
-          key: {
-            background: '#302f37',
-            color: '#f3f3f3',
-            borderRadius: 0,
-          },
-          keys: {
-            space: {
-              background: '#302f37',
-              maxHeight: 'none'
-            }            
-          },
+        // QWERTY
+        layout: {
+          abc: [
+            ['q', 'w', 'e', 'r', 't', 'y', 'u', 'i', 'o', 'p', 'backspace'],
+            ['a', 's', 'd', 'f', 'g', 'h', 'j', 'k', 'l', 'enter'],
+            ['shift', 'z', 'x', 'c', 'v', 'b', 'n', 'm', '!', '?', 'shift'],
+            ['num', '/', 'space', '.'],
+          ],
         },
       },
-      {
-        style: {
-          keyboard: {
-            background: '#fff',
-            color: '#3c4650',
-            fontSize: '2.5vw',
-            fontWeight: 300
-          },
-          key: {
-            border: '.06em solid currentColor',
-            borderRadius: 0,
-            margin: '.4em',
-            padding: '.4em .7em',
-          },
-          keys: {
-            space: {
-              height: '1.2em',
-              background: 'none',
-              
-            }
-          }
-        }
-      }
     ];
 
     theme.onchange = function() {

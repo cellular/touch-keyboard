@@ -24,60 +24,65 @@ const defaults = {
     enter:
       '<svg xmlns="http://www.w3.org/2000/svg" width="1em" viewBox="0 0 100 100"><path fill="currentColor" d="M86.969 9.938C85.387 9.954 83.967 11.418 84 13v54H21.156l13.782-11.719a3 3 0 0 0-2.063-5.312 3 3 0 0 0-1.813.718l-20 17a3 3 0 0 0 0 4.594l20 17a3.005 3.005 0 1 0 3.875-4.594L21.157 73H87c1.57 0 3-1.43 3-3V13c.033-1.602-1.43-3.08-3.031-3.063z" /></svg>',
     abc:
-      '<div style="font-size:.6em; width:2em">ABC</div>',
+      '<div style="font-size:.6em">ABC</div>',
     num:
-      '<div style="font-size:.6em; width:2em">123</div>',
+      '<div style="font-size:.6em">123</div>',
   },
 
   style: {
     keyboard: {
-      position: 'fixed',
-      fontSize: '3vw',
-      padding: '.5em',
+      position: 'fixed',      
+      padding: '1vw',
       right: 0,
       bottom: 0,
       left: 0,
       background: '#eee',
       color: '#32424a',
       boxShadow: '0 0 10px rgba(0,0,0,.5)',
-      transform: `translateY(100%)`,
     },
     row: {
       display: 'flex',
       justifyContent: 'center',
       alignItems: 'center',
-      width: 100 / (11 * 8 + 3) * 11 * 8 +'vw'
+      margin: '0 auto',
     },
-    key: {
-      display: 'flex',
-      background: '#ccc',
-      height: '7vw',
-      flexBasis: 100 / (11 * 8 + 3) * 7 + 'vw',
-      margin: 100 / (11 * 8 + 3) * 0.5 + 'vw',
-      padding: '0 2vw',
+    cell: {
+      height: '1em',
+      width: '1em',
       boxSizing: 'border-box',
+      position: 'relative',
+      padding: '.1em',
       justifyContent: 'center',
-      alignItems: 'center',
     },
     void: {
       flex: 1,
       flexBasis: '6vw',
       margin: '1vw',
     },
+    key: {
+      width: '100%',
+      height: '100%',
+      padding: '0 .4em',
+      boxSizing: 'border-box',
+      fontSize: '.4em',
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'inherit',
+      background: '#ddd',
+      borderRadius: '.15em',
+    },
     keys: {      
       shift: {
-        flex: 1,
+        width: '2em',
         justifyContent: 'flex-start',
       },
       backspace: {
-        flex: 1,
+        width: '2em',
         justifyContent: 'flex-end',
       },
       space: {
-        flex: 10,
-        //borderRadius: '.2em',
-        //background: '#d1d6d9'
-      }
+        width: '7em',        
+      },
     },
   },
 };

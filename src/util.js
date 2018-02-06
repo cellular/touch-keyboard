@@ -46,3 +46,7 @@ export function enter() {
   if (next) next.focus();
   else if (active.form) active.form.submit();
 }
+
+export function maxLength(layout) {
+  return layout.reduce((max, row) => Math.max(max, row.length), 0);
+}

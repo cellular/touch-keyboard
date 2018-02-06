@@ -1,14 +1,15 @@
 import deepExtend from 'deep-extend';
-import { div, move, getContainer, isTextInput, enter } from "./util";
-import defaultOpts from "./defaults";
+import { div, move, getContainer, isTextInput, enter, maxLength } from "./util";
 
-// Type of the last pointer event. Keyboard is only shown for touch events.
-let pointerType;
+import defaultOpts from "./defaults";
+let opts = defaultOpts;
 
 // Whether the shift key is active.
 let shift = false;
 
-let opts = defaultOpts;  
+function defaultLabel(char) {
+  return shift => shift ? char.toUpperCase() : char;  
+}
 
 const actions = {
   void: () => {}, // empty space between keys
@@ -24,12 +25,9 @@ const actions = {
   abc: () => useLayout("abc"),
 };
 
-function defaultLabel(char) {
-  return shift => shift ? char.toUpperCase() : char;  
-}
-
 const keyboard = div(document.body);
 keyboard.ontouchstart = () => false;
+move(keyboard, "100%");
 
 function useLayout(name) {
   keyboard.innerHTML = "";
@@ -41,11 +39,13 @@ function useLayout(name) {
       const id = keyName || 'void';
       const action = actions[id] || {};
       
-      const style = keyName ? opts.style.key : opts.style.void;
-      const el = div(row, style);
       
-      Object.assign(el.style, opts.style.keys[id]);
-
+      const style = keyName ? opts.style.cell : opts.style.void;
+      const cell = div(row, style);
+      Object.assign(cell.style, opts.style.keys[id]);
+      
+      const el = div(cell, opts.style.key);
+      
       const label = opts.label[id] || defaultLabel(keyName);
       const text = typeof label == 'function' ? label(shift) : label;
       el.innerHTML = text;
@@ -60,16 +60,22 @@ function useLayout(name) {
 }
 
 function isUnderKeyboard(el) {
+  if (!el) return false;
   const rect = el.getBoundingClientRect();
   return rect.bottom > window.innerHeight - keyboard.offsetHeight;
 }
 
 function showKeyboard(ev) {
   const el = ev && ev.target;
-  //if (!isTextInput(el) || pointerType !== 'touch') return;
+  if (!isTextInput(el)) return;
   
-  opts = deepExtend({}, defaultOpts, window.touchKeyboard);  
-  Object.assign(keyboard.style, opts.style.keyboard);
+  opts = deepExtend({}, defaultOpts, window.touchKeyboard);
+  const maxKeys = Math.max(
+    maxLength(opts.layout.abc),
+    maxLength(opts.layout.num)
+  );
+  const fontSize = 98 / maxKeys + 'vw';
+  Object.assign(keyboard.style, opts.style.keyboard, { fontSize });
 
   useLayout(el && el.type == "number" ? "num" : "abc");
   move(keyboard, 0);
@@ -84,11 +90,5 @@ function hideKeyboard(ev) {
   move(getContainer(el), 0);
 }
 
-document.addEventListener("pointerup", ev => {
-  pointerType = ev.pointerType;
-});
-
 document.addEventListener("focus", showKeyboard, true);
 //document.addEventListener("blur", hideKeyboard, true);
-
-showKeyboard()
